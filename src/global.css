@@ -1,0 +1,28 @@
+@custom-media --small-width (min-width: 30em);
+
+:root {
+  --hue: 20;
+  --primary: hsl(var(--hue), 100%, 50%);
+  --primary-light: hsl(var(--hue), 90%, 90%);
+  --primary-mid: hsl(var(--hue), 70%, 70%);
+  --bg-light: hsl(var(--hue), 70%, 98%);
+  --text-dark: hsl(var(--hue), 10%, 10%);
+  --text-mid: hsl(var(--hue), 30%, 30%);
+
+  --section-padding-v: 4rem;
+  --section-padding-h: 1.5rem;
+  --shadow-mid: 0.5rem 0.5rem 0 hsl(var(--hue), 20%, 30%);
+  --block-outline: 0.25rem solid var(--primary-mid);
+}
+
+* {
+  all: unset;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+body {
+  font-family: system-ui;
+  color: var(--text-dark);
+  background-color: var(--primary-light);
+}
