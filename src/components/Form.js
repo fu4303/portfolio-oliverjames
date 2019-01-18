@@ -16,7 +16,7 @@ export const Input = styled("input")`
   background-color: var(--bg-light);
   box-shadow: 0.25rem 0.25rem 0 var(--shade-80);
   &:focus {
-    outline: 0.25rem solid var(--shade-80);
+    outline: 0.25rem solid var(--shade-70);
   }
   &::placeholder {
     color: var(--text-mid);
@@ -49,7 +49,6 @@ export const Button = styled("button")`
     background-color: var(--shade-60);
   }
   &:active {
-    box-shadow: none;
     background-color: var(--shade-50);
     /* transform: translate(0.35rem, 0.35rem); */
   }
