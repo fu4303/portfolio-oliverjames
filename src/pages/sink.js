@@ -3,6 +3,7 @@ import styled from "astroturf";
 
 import { TextInput, Button } from "../components/Form";
 import { Post, Carousel } from "../components/Writing";
+import ThemePicker from "../components/ThemePicker";
 
 const Grid = styled.div`
   max-width: 40rem;
@@ -19,6 +20,7 @@ const Grid = styled.div`
 function Sink() {
   return (
     <Grid>
+      <ThemePicker />
       <TextInput id="name" label="Name" placeholder="Leia" />
       <TextInput
         as="textarea"
