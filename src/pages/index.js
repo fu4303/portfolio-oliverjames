@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import Image from "gatsby-image";
 
 import Bio from "../components/Bio";
-import Layout from "../components/Layout";
+import HomeLayout from "../components/HomeLayout";
 import SEO from "../components/seo";
+import Writing from "../components/Writing";
 
 class BlogIndex extends React.Component {
   render() {
@@ -12,13 +14,28 @@ class BlogIndex extends React.Component {
     const posts = data.allMarkdownRemark.edges;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <>
         <SEO
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <Bio />
-        {posts.map(({ node }) => {
+        <HomeLayout
+          about={
+            <>
+              <h1>About</h1>
+              <p>I design and develop user experiences</p>
+              <Image
+                fixed={data.avatar.childImageSharp.fixed}
+                width="250"
+                height="250"
+                alt=""
+              />
+            </>
+          }
+          writing={<Writing />}
+        />
+        {/* <Bio /> */}
+        {/* {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
             <div key={node.fields.slug}>
@@ -31,8 +48,8 @@ class BlogIndex extends React.Component {
               <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
           );
-        })}
-      </Layout>
+        })} */}
+      </>
     );
   }
 }
@@ -44,6 +61,13 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      childImageSharp {
+        fixed(width: 250, height: 250) {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
