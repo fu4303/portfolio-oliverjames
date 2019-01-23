@@ -1,10 +1,8 @@
-@custom-media --small-width (min-width: 30em);
+@custom-media --medium-width (width >= 40rem);
 
 :root {
   --hue: 20;
   --primary: hsl(var(--hue), 100%, 50%);
-  --primary-light: hsl(var(--hue), 90%, 90%);
-  --primary-mid: hsl(var(--hue), 70%, 70%);
 
   --shade-98: hsl(var(--hue), 90%, 98%);
   --shade-96: hsl(var(--hue), 90%, 96%);
@@ -25,12 +23,11 @@
 
   --section-padding-v: 4rem;
   --section-padding-h: 1.5rem;
-  --shadow-mid: 0.5rem 0.5rem 0 hsl(var(--hue), 20%, 30%);
 }
 
 :root.dark {
-  --shade-98: hsl(var(--hue), 90%, 2%);
-  --shade-96: hsl(var(--hue), 90%, 4%);
+  --shade-98: hsl(var(--hue), 90%, 6%);
+  --shade-96: hsl(var(--hue), 90%, 8%);
   --shade-90: hsl(var(--hue), 90%, 10%);
   --shade-80: hsl(var(--hue), 90%, 20%);
   --shade-70: hsl(var(--hue), 70%, 30%);
@@ -43,20 +40,29 @@
 }
 
 * {
-  all: unset;
   box-sizing: border-box;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
+  margin: 0;
 }
 
 body {
   font-family: system-ui;
   color: var(--text-dark);
   background-color: var(--shade-90);
+  transition: background-color 0.2s;
 }
 
 a {
   text-decoration-skip-ink: auto;
+}
+
+input,
+button,
+textarea,
+a {
+  all: unset;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  transition: background-color 0.2s;
 }

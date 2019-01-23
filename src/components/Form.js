@@ -60,20 +60,41 @@ export const AnimationButton = styled(Button)`
   }
 `;
 
+const sliderStyles = `
+  height: 0.25rem;
+  display: grid;
+  align-content: center;
+  background-color: var(--shade-70);
+`;
+
+const thumbStyles = `
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--shade-80);
+  box-shadow: 0.15rem 0.15rem 0 var(--shade-60);
+`;
+
 const Range = styled("input")`
   &::-webkit-slider-runnable-track {
-    height: 0.25rem;
-    display: grid;
-    align-content: center;
-    background-color: var(--shade-60);
+    ${sliderStyles};
   }
   &::-webkit-slider-thumb {
-    appearance: none;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background-color: var(--shade-80);
-    box-shadow: 0.15rem 0.15rem 0 var(--shade-70);
+    ${thumbStyles};
+  }
+  &::-moz-range-track {
+    ${sliderStyles};
+  }
+  &::-moz-range-thumb {
+    ${thumbStyles};
+  }
+  &::-ms-track {
+    ${sliderStyles};
+  }
+  &::-ms-thumb {
+    ${thumbStyles};
   }
 `;
 
@@ -81,7 +102,7 @@ export function RangeInput({ id, label, ...rest }) {
   return (
     <Label htmlFor={id}>
       {label}
-      <Range type="range" {...rest} />
+      <Range type="range" id={id} {...rest} />
     </Label>
   );
 }
@@ -108,9 +129,9 @@ const Checkbox = styled("input")`
 
 export function Toggle({ id, label, ...rest }) {
   return (
-    <Label htmlFor="id">
+    <Label htmlFor={id}>
       {label}
-      <Checkbox type="checkbox" {...rest} />
+      <Checkbox type="checkbox" id={id} {...rest} />
     </Label>
   );
 }

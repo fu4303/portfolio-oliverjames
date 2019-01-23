@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled from "astroturf";
 import { RangeInput, AnimationButton, Toggle } from "./Form";
 
-const INITIAL_HUE = 20;
+const LIGHT_HUE = 20;
+const DARK_HUE = 200;
 
 function ThemePicker() {
-  const [hue, setHue] = useState(INITIAL_HUE);
+  const [hue, setHue] = useState(LIGHT_HUE);
   const [party, setParty] = useState(false);
   const [dark, setDark] = useState(false);
   function changeHue(event) {
@@ -25,7 +26,7 @@ function ThemePicker() {
       }
       return () => {
         clearInterval(interval);
-        setHue(INITIAL_HUE);
+        setHue(dark ? DARK_HUE : LIGHT_HUE);
       };
     },
     [party]
@@ -34,14 +35,16 @@ function ThemePicker() {
     () => {
       if (dark) {
         document.documentElement.classList.add("dark");
+        setHue(DARK_HUE);
       } else {
         document.documentElement.classList.remove("dark");
+        setHue(LIGHT_HUE);
       }
     },
     [dark]
   );
   return (
-    <form>
+    <Form>
       <RangeInput
         label="Hue"
         min={0}
@@ -49,12 +52,23 @@ function ThemePicker() {
         onChange={changeHue}
         value={hue}
       />
+      <Toggle
+        id="dark-mode"
+        label="Dark mode"
+        onChange={() => setDark(!dark)}
+        value={dark}
+      />
       <AnimationButton onClick={() => setParty(!party)} type="button">
         Party
       </AnimationButton>
-      <Toggle label="Dark mode" onChange={() => setDark(!dark)} value={dark} />
-    </form>
+    </Form>
   );
 }
+
+const Form = styled("form")`
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+`;
 
 export default ThemePicker;
