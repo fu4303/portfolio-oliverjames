@@ -6,6 +6,8 @@ module.exports = {
     siteUrl: `https://oliverjam.es/`,
     social: {
       twitter: `_oliverjam`,
+      github: `oliverjam`,
+      linkedIn: `oliverjam`,
     },
   },
   plugins: [
