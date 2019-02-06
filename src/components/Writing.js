@@ -7,7 +7,7 @@ export function Post({ title, href, children, date, ...rest }) {
   return (
     <Link href={href} {...rest}>
       <Article>
-        <Title>{title}</Title>
+        <h3>{title}</h3>
         <Body>{children}</Body>
         <Footer>
           <Time>{date}</Time>
@@ -17,17 +17,19 @@ export function Post({ title, href, children, date, ...rest }) {
   );
 }
 
+const NUM_POSTS = 3;
+
 export default function Writing() {
   return (
     <>
-      <h2>Writing</h2>
+      <Title>Writing</Title>
       <StaticQuery
         query={postsQuery}
         render={data => {
           const posts = data.allMarkdownRemark.edges;
           return (
             <Carousel>
-              {posts.map(({ node }) => {
+              {posts.slice(0, NUM_POSTS).map(({ node }) => {
                 const title = node.frontmatter.title || node.fields.slug;
                 return (
                   <Post
@@ -67,8 +69,15 @@ const postsQuery = graphql`
   }
 `;
 
+const Title = styled("h2")`
+  @media (--large-width) {
+    text-align: right;
+  }
+`;
+
 export const Carousel = styled("div")`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(${NUM_POSTS}, minmax(14rem, 1fr));
   gap: 1rem;
   overflow-x: scroll;
   padding-bottom: 0.5rem;
@@ -97,10 +106,6 @@ const Article = styled("article")`
   grid-template-rows: auto 1fr auto;
   gap: 0.5rem;
   padding: 1rem;
-`;
-
-const Title = styled("h3")`
-  font-weight: 900;
 `;
 
 const Body = styled("p")``;
