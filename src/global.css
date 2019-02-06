@@ -1,4 +1,5 @@
 @custom-media --medium-width (width >= 40rem);
+@custom-media --large-width (width >= 60rem);
 
 :root {
   --hue: 20;
@@ -8,9 +9,9 @@
   --shade-96: hsl(var(--hue), 90%, 96%);
   --shade-90: hsl(var(--hue), 90%, 90%);
   --shade-80: hsl(var(--hue), 90%, 80%);
-  --shade-70: hsl(var(--hue), 70%, 70%);
-  --shade-60: hsl(var(--hue), 70%, 60%);
-  --shade-50: hsl(var(--hue), 70%, 50%);
+  --shade-70: hsl(var(--hue), 90%, 70%);
+  --shade-60: hsl(var(--hue), 80%, 60%);
+  --shade-50: hsl(var(--hue), 80%, 50%);
   --shade-40: hsl(var(--hue), 20%, 40%);
   --shade-30: hsl(var(--hue), 20%, 30%);
   --shade-20: hsl(var(--hue), 20%, 20%);
@@ -51,10 +52,6 @@ body {
   transition: background-color 0.2s;
 }
 
-a {
-  text-decoration-skip-ink: auto;
-}
-
 input,
 button,
 textarea,
@@ -65,4 +62,18 @@ a {
   font-weight: inherit;
   color: inherit;
   transition: background-color 0.2s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900;
+}
+
+a {
+  text-decoration-skip-ink: auto;
+  cursor: pointer;
 }
