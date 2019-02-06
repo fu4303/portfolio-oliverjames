@@ -4,6 +4,7 @@ import styled from "astroturf";
 export const Label = styled.label`
   display: grid;
   grid-template-areas: "label" "input";
+  grid-template-rows: auto 1fr;
   gap: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
