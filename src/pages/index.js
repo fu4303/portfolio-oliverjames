@@ -5,7 +5,9 @@ import Image from "gatsby-image";
 import Bio from "../components/Bio";
 import HomeLayout from "../components/HomeLayout";
 import SEO from "../components/seo";
+import About from "../components/About";
 import Writing from "../components/Writing";
+import Social from "../components/Social";
 
 class BlogIndex extends React.Component {
   render() {
@@ -20,19 +22,9 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
         <HomeLayout
-          about={
-            <>
-              <h1>About</h1>
-              <p>I design and develop user experiences</p>
-              <Image
-                fixed={data.avatar.childImageSharp.fixed}
-                width="250"
-                height="250"
-                alt=""
-              />
-            </>
-          }
+          about={<About />}
           writing={<Writing />}
+          social={<Social />}
         />
         {/* <Bio /> */}
         {/* {posts.map(({ node }) => {
