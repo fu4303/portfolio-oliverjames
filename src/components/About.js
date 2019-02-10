@@ -46,10 +46,13 @@ const aboutQuery = graphql`
 const TitleWrapper = styled("div")`
   display: grid;
   grid-template-areas: "image subtitle" "title title" "social social";
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
   align-items: center;
+  @media (--medium-width) {
+    grid-template-columns: auto 1fr;
+  }
 `;
 
 const Title = styled("h1")`
@@ -60,6 +63,7 @@ const Title = styled("h1")`
 
 const Subtitle = styled("p")`
   grid-area: subtitle;
+  justify-self: start;
   font-size: 1.25rem;
   font-weight: 400;
   /* text-transform: uppercase; */
@@ -69,6 +73,7 @@ const Subtitle = styled("p")`
 
 const ImageWrapper = styled("div")`
   grid-area: image;
+  justify-self: end;
   display: inline-block;
   width: ${IMG_SIZE / 16}rem;
   height: ${IMG_SIZE / 16}rem;
