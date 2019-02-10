@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "astroturf";
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, Link as GatsbyLink } from "gatsby";
 import Time from "./Time";
 
 export function Post({ title, href, children, date, ...rest }) {
   return (
-    <Link href={href} {...rest}>
+    <Link to={href} {...rest}>
       <Article>
         <h3>{title}</h3>
         <Body>{children}</Body>
@@ -17,8 +17,6 @@ export function Post({ title, href, children, date, ...rest }) {
   );
 }
 
-const NUM_POSTS = 3;
-
 export default function Writing() {
   return (
     <>
@@ -29,7 +27,7 @@ export default function Writing() {
           const posts = data.allMarkdownRemark.edges;
           return (
             <Carousel>
-              {posts.slice(0, NUM_POSTS).map(({ node }) => {
+              {posts.map(({ node }) => {
                 const title = node.frontmatter.title || node.fields.slug;
                 return (
                   <Post
@@ -52,7 +50,10 @@ export default function Writing() {
 
 const postsQuery = graphql`
   query PostsQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 3
+    ) {
       edges {
         node {
           excerpt
@@ -77,13 +78,13 @@ const Title = styled("h2")`
 
 export const Carousel = styled("div")`
   display: grid;
-  grid-template-columns: repeat(${NUM_POSTS}, minmax(14rem, 1fr));
+  grid-template-columns: repeat(3, minmax(14rem, 1fr));
   gap: 1rem;
   overflow-x: scroll;
   padding-bottom: 0.5rem;
 `;
 
-const Link = styled("a")`
+const Link = styled(GatsbyLink)`
   display: block;
   min-width: 12rem;
   background-color: var(--bg-light);
