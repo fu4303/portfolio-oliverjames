@@ -23,12 +23,10 @@ The tricks to get it working are putting the sprite in a container the size of a
 By default keyframe animations tween between each frame to create smooth motion. In this case however this ruins the effect:
 
 <p data-height="350" data-theme-id="26563" data-slug-hash="QGOaPd" data-default-tab="result" data-user="oliverjam" data-embed-version="2" data-pen-title="Sprite animation test" class="codepen">See the Pen <a href="http://codepen.io/oliverjam/pen/QGOaPd/">Sprite animation test</a> by Oliver Phillips (<a href="http://codepen.io/oliverjam">@oliverjam</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 We want the animation to jump from frame to frame, giving the illusion of animation. The `steps()` function can be confusing (especially if you don't know that it takes an optional second value of 'start' or 'end'). [This article] explains better than I could how it works, but for this particular purpose we can just set set the same number of steps as frames in our sprite.
 
 <p data-height="350" data-theme-id="26563" data-slug-hash="rWpeWv" data-default-tab="result" data-user="oliverjam" data-embed-version="2" data-pen-title="Sprite animation test 2" class="codepen">See the Pen <a href="http://codepen.io/oliverjam/pen/rWpeWv/">Sprite animation test 2</a> by Oliver Phillips (<a href="http://codepen.io/oliverjam">@oliverjam</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## The sprite
 
@@ -38,13 +36,13 @@ I generated three different versions of the same image using the [JavaScript for
 
 Once you've got your sprite you can start writing code. We need a container to hide the extra frames. One downside to this technique is that it requires a specific size to be set on the container — the size of a single frame of your sprite.
 
-```HTML
+```html
 <div class="sprite">
-  <img class="sprite__img" src"sprite.png" alt="An animated avatar of Oli">
+  <img class="sprite__img" src="sprite.png" alt="An animated avatar of Oli" />
 </div>
 ```
 
-```CSS
+```css
 .sprite {
   width: 256px;
   height: 256px;
@@ -54,13 +52,15 @@ Once you've got your sprite you can start writing code. We need a container to h
 
 We then need to animate the image within the container. The below code will move the sprite its full length to the left every 0.3s, but in 3 discrete steps (moving 33% of its length each step). This means each frame of the sprite is displayed for 0.1s before jumping to the next one.
 
-```CSS
+```css
 .sprite__img {
   animation: flicker 0.25s steps(3) infinite;
 }
 
 @keyframes flicker {
-  to { transform: translateX(-100%); }
+  to {
+    transform: translateX(-100%);
+  }
 }
 ```
 
@@ -70,12 +70,12 @@ I wanted my avatar to be circular rather than square, so I put `border-radius: 5
 
 You can solve this by also promoting the parent element to a new layer with `transform: translate3D(0, 0, 0)`. So the final <abbr>CSS</abbr> looks like this:
 
-```CSS
+```css
 .sprite {
   width: 256px;
   height: 256px;
   overflow: hidden;
-  transform: translate3D(0, 0, 0)
+  transform: translate3D(0, 0, 0);
 }
 
 .sprite__img {
@@ -83,14 +83,16 @@ You can solve this by also promoting the parent element to a new layer with `tra
 }
 
 @keyframes flicker {
-  to { transform: translateX(-100%); }
+  to {
+    transform: translateX(-100%);
+  }
 }
 ```
 
 And here's the end result:
 
-[my About page]: "/about"
-[Primitive]: "https://github.com/fogleman/primitive"
-[This article]: "https://designmodo.com/steps-css-animations/"
-[Javascript fork of Primitive]: "https://ondras.github.io/primitive.js/"
-[long-standing bug in Chrome]: "https://bugs.chromium.org/p/chromium/issues/detail?id=157218"
+[my about page]: "/about"
+[primitive]: "https://github.com/fogleman/primitive"
+[this article]: "https://designmodo.com/steps-css-animations/"
+[javascript fork of primitive]: "https://ondras.github.io/primitive.js/"
+[long-standing bug in chrome]: "https://bugs.chromium.org/p/chromium/issues/detail?id=157218"

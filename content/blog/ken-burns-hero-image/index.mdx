@@ -5,7 +5,7 @@ path: "/ken-burns/"
 published: true
 ---
 
-[Lick] are a shopper marketing agency with a strong focus on creative design, which meant their site needed to be  visual-heavy. They wanted the top of the homepage to communicate this, whilst also subtly nodding to some of the big brands the agency works with.
+[Lick] are a shopper marketing agency with a strong focus on creative design, which meant their site needed to be visual-heavy. They wanted the top of the homepage to communicate this, whilst also subtly nodding to some of the big brands the agency works with.
 
 ## The design process
 
@@ -25,9 +25,9 @@ We need a full viewport container with some images.
 
 ```html
 <div class="hero" id="js-hero">
-  <img class="hero__image js-animating" src="image1.jpg">
-  <img class="hero__image" src="image2.jpg">
-  <img class="hero__image" src="image3.jpg">
+  <img class="hero__image js-animating" src="image1.jpg" />
+  <img class="hero__image" src="image2.jpg" />
+  <img class="hero__image" src="image3.jpg" />
 </div>
 ```
 
@@ -81,11 +81,15 @@ We also set the opacity to 0, allowing our animation to fade the pictures in, an
 }
 
 @keyframes fade {
-  100% { opacity: 1; }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes zoom {
-  100% { transform: scale(1.2); }
+  100% {
+    transform: scale(1.2);
+  }
 }
 ```
 
@@ -98,8 +102,8 @@ Zoom has its `animation-timing-function` set to linear as I found any easing her
 ### Javascript
 
 ```js
-const hero = document.getElementById('js-hero');
-const heroImages = hero.querySelectorAll('.hero__image');
+const hero = document.getElementById("js-hero");
+const heroImages = hero.querySelectorAll(".hero__image");
 const numberOfImages = heroImages.length;
 let i = 1;
 
