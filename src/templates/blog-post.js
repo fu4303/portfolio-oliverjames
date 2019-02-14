@@ -51,7 +51,7 @@ const Container = styled("main")`
   margin: 0 auto;
   padding: 1.5rem;
   font-size: 1.125rem;
-  background-color: var(--shade-96);
+  background-color: var(--shade-98);
   box-shadow: 1rem 1rem 0 var(--shade-80);
   @media (--medium-width) {
     margin: 2.5rem auto;
