@@ -24,7 +24,7 @@ export default function Writing() {
       <StaticQuery
         query={postsQuery}
         render={data => {
-          const posts = data.allMarkdownRemark.edges;
+          const posts = data.allMdx.edges;
           return (
             <Carousel>
               {posts.map(({ node }) => {
@@ -50,10 +50,7 @@ export default function Writing() {
 
 const postsQuery = graphql`
   query PostsQuery {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 3
-    ) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 3) {
       edges {
         node {
           excerpt

@@ -1,52 +1,49 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 import styled from "astroturf";
+import MDXRenderer from "gatsby-mdx/mdx-renderer";
 
 import Bio from "../components/Bio";
 import SEO from "../components/seo";
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark;
-    const siteTitle = this.props.data.site.siteMetadata.title;
-    const { previous, next } = this.props.pageContext;
+function BlogPostTemplate({ pageContext }) {
+  // const siteTitle = data.site.siteMetadata.title;
+  const { body, title, date, excerpt, previous, next } = pageContext;
+  return (
+    <Container>
+      <SEO title={title} description={excerpt} />
+      <h1>{title}</h1>
+      <p>{date}</p>
+      <MDXRenderer>{body}</MDXRenderer>
+      <hr />
+      <Bio />
 
-    return (
-      <Container>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1>{post.frontmatter.title}</h1>
-        <p>{post.frontmatter.date}</p>
-        <Post dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
-        <Bio />
-
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </Container>
-    );
-  }
+      <ul
+        style={{
+          display: `flex`,
+          flexWrap: `wrap`,
+          justifyContent: `space-between`,
+          listStyle: `none`,
+          padding: 0,
+        }}
+      >
+        <li>
+          {previous && (
+            <Link to={previous.slug} rel="prev">
+              ← {previous.title}
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={next.slug} rel="next">
+              {next.title} →
+            </Link>
+          )}
+        </li>
+      </ul>
+    </Container>
+  );
 }
 
 const Container = styled("main")`
@@ -63,51 +60,28 @@ const Container = styled("main")`
   }
 `;
 
-const Post = styled("div")`
-  margin-top: 1.5rem;
-  /* font-family: Georgia, georgia, sans-serif; */
-  line-height: 1.5;
-  & > * + * {
-    margin-top: 1rem;
-  }
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6 {
-    margin-top: 1.5rem;
-    font-family: system-ui;
-    @media (--medium-width) {
-      margin-top: 2rem;
-    }
-  }
-  & a {
-    text-decoration: underline;
-    transition: color 0.2s;
-    &:hover {
-      color: var(--primary);
-    }
-  }
-`;
-
 export default BlogPostTemplate;
 
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-      }
-    }
-  }
-`;
+// export const pageQuery = graphql`
+//   query BlogPostBySlug($slug: String!) {
+//     site {
+//       siteMetadata {
+//         title
+//         author
+//       }
+//     }
+//     allMdx(filter: { fields: { slug: { eq: $slug } } }) {
+//       edges {
+//         node {
+//           id
+//           excerpt(pruneLength: 160)
+//           html
+//           frontmatter {
+//             title
+//             date(formatString: "MMMM DD, YYYY")
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
