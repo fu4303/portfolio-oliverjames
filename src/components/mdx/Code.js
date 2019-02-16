@@ -4,13 +4,13 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/duotoneLight";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 
-const Pre = styled("pre")`
-  /* margin: 1rem 0; */
+const StyledPre = styled("pre")`
   border-radius: 0.125rem;
   padding: 0.75rem;
   font-size: 0.875rem;
+  font-family: Monaco, monaco, Consolas, monospace;
   overflow-x: scroll;
-  background-color: var(--shade-96);
+  background-color: var(--bg-code);
   color: var(--col);
 
   & .token-line {
@@ -19,7 +19,7 @@ const Pre = styled("pre")`
   }
 `;
 
-const Code = ({ codeString, language, ...props }) => {
+export const Pre = ({ codeString, language, ...props }) => {
   if (props["react-live"]) {
     return (
       <LiveProvider code={codeString}>
@@ -37,7 +37,10 @@ const Code = ({ codeString, language, ...props }) => {
         language={language}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Pre className={className} style={{ "--col": theme.plain.color }}>
+          <StyledPre
+            className={className}
+            style={{ "--col": theme.plain.color }}
+          >
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (
@@ -45,11 +48,17 @@ const Code = ({ codeString, language, ...props }) => {
                 ))}
               </div>
             ))}
-          </Pre>
+          </StyledPre>
         )}
       </Highlight>
     );
   }
 };
 
-export default Code;
+export const Code = styled("code")`
+  border-radius: 0.125rem;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875rem;
+  font-family: Monaco, monaco, Consolas, monospace;
+  background-color: var(--bg-code);
+`;

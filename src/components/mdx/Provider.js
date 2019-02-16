@@ -2,7 +2,7 @@ import React from "react";
 import styled from "astroturf";
 import { MDXProvider } from "@mdx-js/tag";
 import { preToCodeBlock } from "mdx-utils";
-import Code from "./Code";
+import { Pre, Code } from "./Code";
 
 const Post = styled("div")`
   margin-top: 1.5rem;
@@ -38,11 +38,12 @@ export default class Provider extends React.Component {
       <MDXProvider
         components={{
           wrapper: props => <Post {...props} />,
+          inlineCode: props => <Code {...props} />,
           pre: preProps => {
             const props = preToCodeBlock(preProps);
             // if there's a codeString and some props, we passed the test
             if (props) {
-              return <Code {...props} />;
+              return <Pre {...props} />;
             } else {
               // it's possible to have a pre without a code in it
               return <pre {...preProps} />;

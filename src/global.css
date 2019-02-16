@@ -7,6 +7,7 @@
 
   --shade-98: hsl(var(--hue), 90%, 98%);
   --shade-96: hsl(var(--hue), 90%, 96%);
+  --shade-94: hsl(var(--hue), 90%, 94%);
   --shade-90: hsl(var(--hue), 90%, 90%);
   --shade-80: hsl(var(--hue), 90%, 80%);
   --shade-70: hsl(var(--hue), 90%, 70%);
@@ -18,6 +19,7 @@
   --shade-10: hsl(var(--hue), 10%, 10%);
 
   --bg-light: var(--shade-98);
+  --bg-code: var(--shade-94);
   --text-dark: var(--shade-10);
   --text-mid: var(--shade-40);
   --text-light: var(--shade-98);
@@ -29,6 +31,7 @@
 :root.dark {
   --shade-98: hsl(var(--hue), 90%, 6%);
   --shade-96: hsl(var(--hue), 90%, 8%);
+  --shade-94: hsl(var(--hue), 90%, 9%);
   --shade-90: hsl(var(--hue), 90%, 10%);
   --shade-80: hsl(var(--hue), 90%, 20%);
   --shade-70: hsl(var(--hue), 70%, 30%);
