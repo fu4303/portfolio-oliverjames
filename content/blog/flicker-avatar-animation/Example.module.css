@@ -1,0 +1,36 @@
+@keyframes slide {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.image {
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.steps {
+  animation-timing-function: steps(3);
+}
+
+.final {
+  width: auto;
+  height: 100%;
+  animation-duration: 0.25s;
+}
+
+.stage {
+  width: 256px;
+  height: 256px;
+  border: 0.25rem solid var(--bg-code);
+  transform: translate3D(0, 0, 0);
+}
+
+.stageFinal {
+  border-radius: 50%;
+  overflow: hidden;
+}

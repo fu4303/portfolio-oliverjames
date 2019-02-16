@@ -6,6 +6,8 @@ tags: "test"
 published: false
 ---
 
+import Example from "./Example";
+
 I just added a flickering faux-motion effect avatar to [my About page]. The technique behind it is fun (and requires relatively little code).
 
 [Primitive] came to my attention a while ago as a nice tool for creating vectorised images. I was enamoured with the flickering effect achieved by animating between multiple versions of the same photo (Primitive produces different versions each time it is run).
@@ -22,15 +24,17 @@ The tricks to get it working are putting the sprite in a container the size of a
 
 By default keyframe animations tween between each frame to create smooth motion. In this case however this ruins the effect:
 
-<p data-height="350" data-theme-id="26563" data-slug-hash="QGOaPd" data-default-tab="result" data-user="oliverjam" data-embed-version="2" data-pen-title="Sprite animation test" class="codepen">See the Pen <a href="http://codepen.io/oliverjam/pen/QGOaPd/">Sprite animation test</a> by Oliver Phillips (<a href="http://codepen.io/oliverjam">@oliverjam</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<Example />
 
 We want the animation to jump from frame to frame, giving the illusion of animation. The `steps()` function can be confusing (especially if you don't know that it takes an optional second value of 'start' or 'end'). [This article] explains better than I could how it works, but for this particular purpose we can just set set the same number of steps as frames in our sprite.
 
-<p data-height="350" data-theme-id="26563" data-slug-hash="rWpeWv" data-default-tab="result" data-user="oliverjam" data-embed-version="2" data-pen-title="Sprite animation test 2" class="codepen">See the Pen <a href="http://codepen.io/oliverjam/pen/rWpeWv/">Sprite animation test 2</a> by Oliver Phillips (<a href="http://codepen.io/oliverjam">@oliverjam</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<Example steps={true} />
 
 ## The sprite
 
 I generated three different versions of the same image using the [JavaScript fork of Primitive] and then stitched them together in Preview. This in itself was a bit of a hassle as you can't change the canvas size without also resizing the image. You need to select all, cut the image, adjust image size to 300% width, then re-paste the first image and move to the left edge. You can then cut and paste the next two images alongside the first to fill the remaining space.
+
+![three slightly different versions of my face](./profile-sprite.png)
 
 ## The code
 
@@ -75,6 +79,7 @@ You can solve this by also promoting the parent element to a new layer with `tra
   width: 256px;
   height: 256px;
   overflow: hidden;
+  border-radius: 50%;
   transform: translate3D(0, 0, 0);
 }
 
@@ -90,6 +95,8 @@ You can solve this by also promoting the parent element to a new layer with `tra
 ```
 
 And here's the end result:
+
+<Example steps={true} final={true} />
 
 [my about page]: "/about"
 [primitive]: "https://github.com/fogleman/primitive"
