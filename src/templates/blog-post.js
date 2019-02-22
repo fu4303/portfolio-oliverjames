@@ -20,29 +20,30 @@ function BlogPostTemplate({ pageContext }) {
           </Link>
           <SEO title={title} description={excerpt} keywords={tags} />
           <h1>{title}</h1>
-          <time datetime={date}>{readableDate}</time>
+          <time dateTime={date}>{readableDate}</time>
           <MDXRenderer>{body}</MDXRenderer>
           {/* <Bio /> */}
         </PostContainer>
         <RelatedContainer>
-          {next && (
-            <li>
+          <li>
+            {next && (
               <RelatedLink to={next.slug} rel="next" aria-label="Next post">
-                ← {next.title}
+                ← {next.frontmatter.title}
               </RelatedLink>
-            </li>
-          )}
-          {previous && (
-            <li>
+            )}
+          </li>
+
+          <li>
+            {previous && (
               <RelatedLink
                 to={previous.slug}
                 rel="prev"
                 aria-label="Previous post"
               >
-                {previous.title} →
+                {previous.frontmatter.title} →
               </RelatedLink>
-            </li>
-          )}
+            )}
+          </li>
         </RelatedContainer>
       </Center>
     </Layout>
