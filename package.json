@@ -45,6 +45,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.3",
+    "gatsby-plugin-netlify": "^2.0.11",
     "prettier": "^1.14.2"
   },
   "homepage": "https://github.com/oliverjam/website",

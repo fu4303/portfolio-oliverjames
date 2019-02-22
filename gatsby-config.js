@@ -96,5 +96,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-astroturf`,
+    `gatsby-plugin-netlify`,
   ],
 };
