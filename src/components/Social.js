@@ -25,7 +25,7 @@ export default function Social() {
                 <Github />
               </a>
               <a
-                href={`https://linkedin.com/${social.linkedIn}`}
+                href={`https://linkedin.com/in/${social.linkedIn}`}
                 aria-label="LinkedIn"
               >
                 <LinkedIn />
