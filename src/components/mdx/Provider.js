@@ -16,11 +16,8 @@ const Post = styled("div")`
   & h4,
   & h5,
   & h6 {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     font-family: system-ui;
-    @media (--medium-width) {
-      margin-top: 2rem;
-    }
   }
   & a {
     text-decoration: underline;
