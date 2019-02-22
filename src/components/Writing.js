@@ -50,7 +50,7 @@ export default function Writing() {
 
 const postsQuery = graphql`
   query PostsQuery {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 3) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 5) {
       edges {
         node {
           excerpt
@@ -75,7 +75,7 @@ const Title = styled("h2")`
 
 export const Carousel = styled("div")`
   display: grid;
-  grid-template-columns: repeat(3, minmax(14rem, 1fr));
+  grid-template-columns: repeat(5, minmax(14rem, 1fr));
   gap: 1rem;
   overflow-x: scroll;
   padding-bottom: 0.5rem;
@@ -85,7 +85,8 @@ const Link = styled(GatsbyLink)`
   display: block;
   min-width: 12rem;
   background-color: var(--bg-light);
-  box-shadow: 0.25rem 0.25rem 0 var(--shade-80);
+  border: 0.25rem solid;
+  box-shadow: 0.25rem 0.25rem 0 var(--shade-60);
   &:focus {
     background-color: var(--shade-96);
   }
