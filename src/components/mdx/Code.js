@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "astroturf";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/duotoneLight";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import theme from "./theme";
 
 const StyledPre = styled("pre")`
   border-radius: 0.125rem;
@@ -10,8 +10,7 @@ const StyledPre = styled("pre")`
   font-size: 0.875rem;
   font-family: Monaco, monaco, Consolas, monospace;
   overflow-x: scroll;
-  background-color: var(--bg-code);
-  color: var(--col);
+  background-color: hsl(20, 90%, 96%);
 
   & .token-line {
     line-height: 1.3rem;
@@ -37,10 +36,7 @@ export const Pre = ({ codeString, language, ...props }) => {
         language={language}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <StyledPre
-            className={className}
-            style={{ "--col": theme.plain.color }}
-          >
+          <StyledPre className={className}>
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (
