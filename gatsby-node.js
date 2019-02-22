@@ -1,5 +1,4 @@
 const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -14,12 +13,16 @@ exports.createPages = async ({ graphql, actions }) => {
               relativeDirectory
               childMdx {
                 frontmatter {
+                  published
                   title
                   date(formatString: "MMMM DD, YYYY")
+                  path
+                  tags
                 }
                 code {
                   body
                 }
+                excerpt
               }
             }
           }
@@ -39,15 +42,17 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1];
     const next = index === 0 ? null : posts[index - 1];
 
-    createPage({
-      path: post.relativeDirectory,
-      component: path.resolve(`./src/templates/blog-post.js`),
-      context: {
-        ...getPostContext(post),
-        previous: getPostContext(previous),
-        next: getPostContext(next),
-      },
-    });
+    if (post.childMdx.frontmatter.published) {
+      createPage({
+        path: post.relativeDirectory,
+        component: path.resolve(`./src/templates/blog-post.js`),
+        context: {
+          ...getPostContext(post),
+          previous: getPostContext(previous),
+          next: getPostContext(next),
+        },
+      });
+    }
   });
 };
 
@@ -55,9 +60,8 @@ function getPostContext(post) {
   if (post)
     return {
       id: post.id,
-      slug: post.relativeDirectory,
-      title: post.childMdx.frontmatter.title,
-      date: post.childMdx.frontmatter.date,
+      slug: post.childMdx.frontmatter.path || post.relativeDirectory,
+      frontmatter: post.childMdx.frontmatter,
       excerpt: post.childMdx.excerpt,
       body: post.childMdx.code.body,
     };
