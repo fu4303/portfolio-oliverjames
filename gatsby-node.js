@@ -6,7 +6,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allFile(filter: { extension: { eq: "mdx" } }) {
+        allFile(
+          filter: { extension: { eq: "mdx" } }
+          sort: { fields: birthTime, order: DESC }
+        ) {
           edges {
             node {
               id
@@ -61,7 +64,7 @@ function getPostContext(post) {
   if (post)
     return {
       id: post.id,
-      slug: post.childMdx.frontmatter.path || post.relativeDirectory,
+      slug: post.relativeDirectory,
       frontmatter: post.childMdx.frontmatter,
       excerpt: post.childMdx.excerpt,
       body: post.childMdx.code.body,
@@ -78,20 +81,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value: parent.relativeDirectory,
     });
+    createNodeField({
+      name: "birthTime",
+      node,
+      value: parent.birthTime,
+    });
+    createNodeField({
+      name: "modifiedTime",
+      node,
+      value: parent.modifiedTime,
+    });
   }
 };
-
-// {
-//   allMdx(
-//     sort: { fields: [frontmatter___date], order: DESC }
-//     limit: 1000
-//   ) {
-//     edges {
-//       node {
-//         frontmatter {
-//           title
-//         }
-//       }
-//     }
-//   }
-// }
