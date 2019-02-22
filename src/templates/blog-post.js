@@ -10,7 +10,7 @@ import SEO from "../components/seo";
 function BlogPostTemplate({ pageContext }) {
   // const siteTitle = data.site.siteMetadata.title;
   const { body, excerpt, frontmatter, previous, next } = pageContext;
-  const { title, date, tags } = frontmatter;
+  const { title, date, readableDate, tags } = frontmatter;
   return (
     <Layout>
       <Center>
@@ -20,7 +20,7 @@ function BlogPostTemplate({ pageContext }) {
           </Link>
           <SEO title={title} description={excerpt} keywords={tags} />
           <h1>{title}</h1>
-          <p>{date}</p>
+          <time datetime={date}>{readableDate}</time>
           <MDXRenderer>{body}</MDXRenderer>
           {/* <Bio /> */}
         </PostContainer>
