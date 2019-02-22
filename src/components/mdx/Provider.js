@@ -3,10 +3,10 @@ import styled from "astroturf";
 import { MDXProvider } from "@mdx-js/tag";
 import { preToCodeBlock } from "mdx-utils";
 import { Pre, Code } from "./Code";
+import { List } from "./List";
 
 const Post = styled("div")`
   margin-top: 1.5rem;
-  /* font-family: Georgia, georgia, sans-serif; */
   line-height: 1.5;
   & > * + * {
     margin-top: 1rem;
@@ -39,6 +39,8 @@ export default class Provider extends React.Component {
         components={{
           wrapper: props => <Post {...props} />,
           inlineCode: props => <Code {...props} />,
+          ul: props => <List {...props} />,
+          ol: props => <List {...props} as="ol" />,
           pre: preProps => {
             const props = preToCodeBlock(preProps);
             // if there's a codeString and some props, we passed the test
