@@ -68,7 +68,7 @@ const postsQuery = graphql`
 `;
 
 const Title = styled("h2")`
-  @media (--large-width) {
+  @media (min-width: 55rem) {
     text-align: right;
   }
 `;

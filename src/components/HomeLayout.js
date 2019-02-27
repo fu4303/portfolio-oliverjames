@@ -4,7 +4,7 @@ import styled from "astroturf";
 const Grid = styled("main")`
   min-height: 100vh;
   border: 0.25rem solid;
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     --rows: 1fr 1fr;
     --cols: 2fr 1fr;
     display: grid;
@@ -14,7 +14,7 @@ const Grid = styled("main")`
       "about social"
       "writing writing";
   }
-  @media (--large-width) {
+  @media (min-width: 55rem) {
     --rows: 1.618fr 1fr;
     --cols: 1fr 1.25fr;
     grid-template-areas:
@@ -29,7 +29,7 @@ const Section = styled("section")`
   padding-block: var(--section-padding-v);
   padding-inline: var(--section-padding-h);
   border: 0.25rem solid;
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     --section-padding-v: var(--section-padding-h);
   }
   &.about {
@@ -39,10 +39,10 @@ const Section = styled("section")`
     background-color: var(--primary);
     background-image: var(--pattern-leaves);
     text-align: center;
-    @media (--medium-width) {
+    @media (min-width: 45rem) {
       text-align: initial;
     }
-    @media (--large-width) {
+    @media (min-width: 55rem) {
       padding-left: 3rem;
     }
   }
@@ -53,7 +53,7 @@ const Section = styled("section")`
     place-content: center;
     overflow: hidden;
     background-color: var(--shade-70);
-    @media (--large-width) {
+    @media (min-width: 55rem) {
       --section-padding-h: 3rem;
     }
   }

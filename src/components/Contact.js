@@ -41,7 +41,7 @@ export default function Contact() {
 }
 
 const Title = styled("h2")`
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     text-align: right;

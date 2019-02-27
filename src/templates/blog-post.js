@@ -58,7 +58,7 @@ const Center = styled.div`
   max-width: 45rem;
   margin-left: auto;
   margin-right: auto;
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     margin-top: 2rem;
   }
 `;
@@ -69,7 +69,7 @@ const PostContainer = styled("main")`
   background-color: var(--shade-98);
   box-shadow: 0.5rem 0.5rem 0 var(--shade-60);
   border: 0.5rem solid;
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     margin: 2.5rem auto;
     padding: 3rem;
     font-size: 1.25rem;
@@ -84,7 +84,7 @@ const RelatedContainer = styled("ul")`
   padding: 0;
   list-style: none;
   font-size: 1.25rem;
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     margin: 2rem 0;
     grid-template-columns: 1fr 1fr;
   }
@@ -100,7 +100,7 @@ const RelatedLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     box-shadow: 1rem 1rem 0 var(--shade-60);
   }
 `;

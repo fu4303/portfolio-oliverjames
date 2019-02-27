@@ -25,7 +25,7 @@ const TitleWrapper = styled("div")`
   column-gap: 0.5rem;
   row-gap: 0.5rem;
   align-items: center;
-  @media (--medium-width) {
+  @media (min-width: 45rem) {
     grid-template-columns: auto 1fr;
   }
 `;
