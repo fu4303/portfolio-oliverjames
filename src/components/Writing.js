@@ -50,7 +50,7 @@ export default function Writing() {
 
 const postsQuery = graphql`
   query PostsQuery {
-    allMdx(sort: { fields: fields___birthTime, order: DESC }, limit: 5) {
+    allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 5) {
       edges {
         node {
           excerpt

@@ -6,27 +6,24 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allFile(
-          filter: { extension: { eq: "mdx" } }
-          sort: { fields: birthTime, order: DESC }
-        ) {
+        allMdx(sort: { fields: frontmatter___date, order: DESC }) {
           edges {
             node {
               id
-              relativeDirectory
-              childMdx {
-                frontmatter {
-                  published
-                  title
-                  date
-                  readableDate: date(formatString: "MMMM DD, YYYY")
-                  path
-                  tags
-                }
-                code {
-                  body
-                }
-                excerpt
+              excerpt
+              code {
+                body
+              }
+              fields {
+                slug
+              }
+              frontmatter {
+                published
+                title
+                date
+                readableDate: date(formatString: "MMMM DD, YYYY")
+                path
+                tags
               }
             }
           }
@@ -40,15 +37,15 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allFile.edges.map(({ node }) => node);
+  const posts = result.data.allMdx.edges.map(({ node }) => node);
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1];
     const next = index === 0 ? null : posts[index - 1];
 
-    if (post.childMdx.frontmatter.published) {
+    if (post.frontmatter.published) {
       createPage({
-        path: post.relativeDirectory,
+        path: post.fields.slug,
         component: path.resolve(`./src/templates/blog-post.js`),
         context: {
           ...getPostContext(post),
@@ -64,10 +61,10 @@ function getPostContext(post) {
   if (post)
     return {
       id: post.id,
-      slug: post.relativeDirectory,
-      frontmatter: post.childMdx.frontmatter,
-      excerpt: post.childMdx.excerpt,
-      body: post.childMdx.code.body,
+      slug: post.fields.slug,
+      frontmatter: post.frontmatter,
+      excerpt: post.excerpt,
+      body: post.code.body,
     };
 }
 
@@ -76,20 +73,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `Mdx`) {
     const parent = getNode(node.parent);
+    // console.log(node);
+    // console.log("\n", parent);
     createNodeField({
       name: `slug`,
       node,
       value: parent.relativeDirectory,
-    });
-    createNodeField({
-      name: "birthTime",
-      node,
-      value: parent.birthTime,
-    });
-    createNodeField({
-      name: "modifiedTime",
-      node,
-      value: parent.modifiedTime,
     });
   }
 };
