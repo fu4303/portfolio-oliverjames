@@ -22,6 +22,9 @@ module.exports = {
               sizeByPixelDensity: true,
             },
           },
+          {
+            resolve: "gatsby-remark-copy-linked-files",
+          },
         ],
       },
     },

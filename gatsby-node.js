@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
               code {
                 body
               }
+              timeToRead
               fields {
                 slug
               }
@@ -65,6 +66,7 @@ function getPostContext(post) {
       frontmatter: post.frontmatter,
       excerpt: post.excerpt,
       body: post.code.body,
+      timeToRead: post.timeToRead,
     };
 }
 
@@ -78,7 +80,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: parent.relativeDirectory,
+      value: `blog/${parent.relativeDirectory}`,
     });
   }
 };
