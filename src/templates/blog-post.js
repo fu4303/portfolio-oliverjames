@@ -9,7 +9,14 @@ import SEO from "../components/seo";
 
 function BlogPostTemplate({ pageContext }) {
   // const siteTitle = data.site.siteMetadata.title;
-  const { body, excerpt, frontmatter, previous, next } = pageContext;
+  const {
+    body,
+    excerpt,
+    frontmatter,
+    timeToRead,
+    previous,
+    next,
+  } = pageContext;
   const { title, date, readableDate, tags } = frontmatter;
   return (
     <Layout>
@@ -20,7 +27,11 @@ function BlogPostTemplate({ pageContext }) {
           </Link>
           <SEO title={title} description={excerpt} keywords={tags} />
           <h1>{title}</h1>
-          <time dateTime={date}>{readableDate}</time>
+          <Metadata>
+            <time dateTime={date}>{readableDate}</time>
+            <span aria-hidden="true">•</span>
+            <span>{timeToRead} minute read</span>
+          </Metadata>
           <MDXRenderer>{body}</MDXRenderer>
           {/* <Bio /> */}
         </PostContainer>
@@ -75,6 +86,12 @@ const PostContainer = styled("main")`
     font-size: 1.25rem;
     box-shadow: 1rem 1rem 0 var(--shade-60);
   }
+`;
+
+const Metadata = styled("div")`
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-column-gap: 0.5rem;
 `;
 
 const RelatedContainer = styled("ul")`
