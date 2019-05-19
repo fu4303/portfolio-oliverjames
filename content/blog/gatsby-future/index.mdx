@@ -1,0 +1,39 @@
+---
+title: Gatsby is the next WordPress
+date: "2019-05-19T16:30:00Z"
+tags: ["js", "gatsby", "wordpress", "web"]
+published: true
+---
+
+I'm starting to feel like Gatsby is going to take over from WordPress as the go-to platform for general websites.
+
+## Why WordPress was so successful
+
+## Gatsby overview
+
+Gatsby started life as a React-based static-site generator. It takes various data sources and uses React components as templates to generate HTML files. The big difference between Gatsby and most static-site generators is that Gatsby also creates a client-side JavaScript app. This best-of-both-worlds approach means your site renders the initial view very quickly, then continues to "boot up" into a full-blown single-page app while the user is browsing. Once enough of the "app" has been loaded navigation becomes instant and doesn't require server round-trips.
+
+Gatsby has become incredibly popular for a few reasons:
+
+1. Super fast by default. It's possible to make a slow Gatsby site, but out of the box it generally gets perfect scores on performance tests.
+1. Easy data-sourcing. Gatsby's plugin system makes it simple to combine different sources of data: you can have markdown files in a Github repo and a Google Sheet for example.
+
+## New Gatsby features
+
+- [Themes](https://www.gatsbyjs.org/blog/2018-11-11-introducing-gatsby-themes/) hide complexity of big sites with lots of plugins
+- MDX is amazing and will be even better with good CMS support
+- Using JSX in MDX is way better than [shortcodes](https://www.christopherbiscardi.com/post/towards-shortcodes-for-gatsby-sites)
+  - Makes creating custom content very accessible to non-technical users
+
+## Where Gatsby outshines WordPress
+
+- JavaScript all the things
+- Dev experience
+  - Vastly better performance
+  - Cheap static hosting
+  - Modern interaction paradigm (React vs JQuery)
+
+## Problems Gatsby needs to solve
+
+- Built-in CMS (Netlify CMS/Contentful aren't enough)
+- Related to CMS: authentication is tough for static sites (need a server somewhere)
