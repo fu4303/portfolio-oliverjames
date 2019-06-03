@@ -1,27 +1,33 @@
 ---
 title: Gatsby is the next WordPress
 date: "2019-05-19T16:30:00Z"
-tags: ["js", "gatsby", "wordpress", "web"]
+tags: ["js", "gatsby", "wordpress", "web", "future"]
 published: true
 ---
 
-I think Gatsby is going to take over from WordPress as the go-to platform for websites.
+I think Gatsby is the future of the web. I'm going to explain why by comparing it to WordPress, the current go-to platform for websites. I think Gatsby already meets or exceeds most of the things that make WordPress so popular, so it's well placed to become the next huge thing.
 
 ## Why WordPress was so successful
 
-- Free/OSS
-- Easy shared hosting
-- Tons of devs building themes/plugins
-- Great non-technical content experience
+I think WordPress has dominated the web for a few reasons:
+
+1. It's free and open-source. This makes it an obvious default to build on, especially for small to mid-sized sites with limited budgets.
+1. Easy shared hosting. The proliferation of cheap shared PHP hosting that sprang up in the 2000s made it easy to throw a WordPress site up.
+1. Huge community contributing themes and plugins. This makes it easy to install new functionality without writing code yourself.
+1. Great non-technical content experience. The WordPress CMS makes it easy for non-devs to log in and update the site.
 
 ## Gatsby overview
 
 Gatsby started life as a React-based static-site generator. It takes various data sources and uses React components as templates to generate HTML files. The big difference between Gatsby and most static-site generators is that Gatsby also creates a client-side JavaScript app. This best-of-both-worlds approach means your site renders the initial view very quickly, then continues to "boot up" into a full-blown single-page app while the user is browsing. Once enough of the "app" has been loaded navigation becomes instant and doesn't require server round-trips.
 
-Gatsby has become incredibly popular for a few reasons:
+## Gatsby vs WordPress
 
-1. Super fast by default. It's possible to make a slow Gatsby site, but out of the box it generally gets perfect scores on performance tests.
-1. Easy data-sourcing. Gatsby's plugin system makes it simple to combine different sources of data: you can have markdown files in a Github repo and a Google Sheet for example.
+Lets revisit the four things that helped WordPress succeed and see how Gatsby matches up.
+
+1. It's free and open-source. There's also a VC-backed company behind the software (Gatsby Inc) just like Automaticc behind WordPress.
+1. Easy shared hosting. Since Gatsby sites use entirely static assets (everything is either pre-rendered at build time or rendered on the client) you don't even need a server. There's been a boom in cheap static hosts with great developer experiences (e.g. Netlify, Now) and Gatsby is positioned to take advantage. You can even throw a Gatsby site on Github Pages if you like.
+1. Huge community contributing themes and plugins. The community isn't as huge as WordPress' but it's growing quickly. The Gatsby ecosystem is built on plugins, and the core Gatsby APIs make it easy to create your own if you can't find what you're looking for.
+1. Great non-technical content experience. This is where Gatsby is still lacking. A static site is great for many reasons, but it does make content editing more complicated. You've got to store the assets somewhere, and without a server and database that means you're reliant on 3rd party services like Contentful and Netlify CMS. Lots of Gatsby sites are developer-focused and store content in Github, but this isn't feasible for non-technical editors.
 
 ## New Gatsby features
 
@@ -31,6 +37,18 @@ Gatsby has become incredibly popular for a few reasons:
   - Makes creating custom content very accessible to non-technical users
 
 ## Where Gatsby outshines WordPress
+
+### Performance
+
+Gatsby is super fast by default. It's possible to make a slow Gatsby site, but out of the box it generally gets perfect scores on performance tests. In contrast whilst it's possible to make a super fast WordPress site, the default isn't great. The plugin model means it's common to come across sites with tons of injected blocking resources, three different copies of JQuery and a generally slower experience.
+
+### Data-sourcing
+
+WordPress has an opinionated data model. You store everything in the MySQL database and adapt everything to fit how WordPress wants it to work. Gatsby is much more data-agnostic. The plugin system makes it simple to combine different sources of data. You can have markdown files in a Github repo, a Google Sheet and a CMS like Contentful all piping stuff in to the site at build time.
+
+### Developer experience
+
+1. React has taken over the JavaScript world. Developers want to use it to write static sites as well as apps.
 
 - JavaScript all the things
 - Dev experience
