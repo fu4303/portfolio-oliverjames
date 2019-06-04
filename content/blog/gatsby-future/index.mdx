@@ -1,27 +1,27 @@
 ---
-title: Gatsby is the next WordPress
+title: Gatsby is the future
 date: "2019-05-19T16:30:00Z"
 tags: ["js", "gatsby", "wordpress", "web", "future"]
 published: true
 ---
 
-I think Gatsby is the future of the web. I'm going to explain why by comparing it to WordPress, the current go-to platform for websites. I think Gatsby already meets or exceeds most of the things that make WordPress so popular, so it's well placed to become the next huge thing.
+I think Gatsby is the future of the web. I'm going to explain why by comparing it to [WordPress](https://wordpress.org/), the go-to platform for websites over the last fifteen years. I think Gatsby already meets or exceeds most of the things that make WordPress so popular, so it's well placed to become the next huge thing.
 
 ## Why WordPress was so successful
 
 I think WordPress has dominated the web for a few reasons.
 
 ### Free and open-source
-This makes it an obvious default to build on, especially for small to mid-sized sites with limited budgets. If you're an agency charging under £10k for a basic marketing site plus blog you can't really afford to splash a decent chunk of that on a framework or content management system.
+WordPress is free and open-source, but backed by a private company called Automaticc. This makes it an obvious default to build on, especially for small to mid-sized sites with limited budgets. If you're an agency charging under £10k for a basic marketing site plus blog you can't really afford to splash a decent chunk of that on a framework or content management system.
 
 ### Easy hosting
-The proliferation of cheap shared PHP hosting that sprang up in the 2000s made it easy to throw a WordPress site somewhere. There are also lots of well-established (slightly more expensive) dedicated WordPress hosts who manage the installation and upgrade process, which is great for peace of mind after handing a site off to a non-technical client.
+The proliferation of cheap shared PHP hosting that sprang up in the 2000s made it easy to throw a WordPress site somewhere. There are also lots of well-established (slightly more expensive) dedicated WordPress hosts who manage the installation and upgrade process. This is great for peace of mind after handing a site off to a non-technical client.
 
 ### Huge community
 There are a lot of developers and businesses contributing themes, plugins and code to WordPress. This makes it easy to install new functionality without writing code yourself.
 
 ### Great content experience
-The WordPress CMS makes it easy for non-technical users to log in and update the site. I think developers sometimes underestimate just how important this is—even something as "simple" to us and opening a PR on Github to edit a Markdown file is too much for someone at a small business already doing three jobs who just wants to edit a blog post.
+The WordPress CMS makes it easy for non-technical users to log in and update the site. I think developers sometimes underestimate just how important this is—even something as "simple" to us as editing a Markdown file on Github is too much for someone at a small business already doing three jobs who just wants to edit a blog post.
 
 ## Gatsby overview
 
@@ -32,28 +32,28 @@ Gatsby started life as a React-based static-site generator. It takes various dat
 Lets revisit the four things that helped WordPress succeed and see how Gatsby matches up.
 
 ### Free and open-source
-There's also a VC-backed company behind the software (Gatsby Inc) just like Automaticc behind WordPress. Gatsby Inc is a _little_ bit smaller than Automaticc, but it's very new. They've assembled a [team of great people](https://www.gatsbyjs.com/about) who clearly care deeply about building a fantastic tool.
+Gatbsy is also free and open source. There's a VC-backed company behind the software ([Gatsby Inc](https://www.gatsbyjs.com/)) just like Automaticc. Gatsby Inc is a _little_ bit smaller than Automaticc, but it's very new. They've assembled a [team of great people](https://www.gatsbyjs.com/about) who clearly care deeply about building a fantastic tool.
 
 ### Easy shared hosting
-Since Gatsby sites use entirely static assets (everything is either pre-rendered at build time or rendered on the client) you don't even need a server. There's been a boom in cheap (or free!) static hosts with great developer experiences (e.g. Netlify, Now) and Gatsby is positioned to take advantage. You can even throw a Gatsby site on Github Pages if you like.
+Since Gatsby sites are entirely static (everything is either pre-rendered at build time or rendered on the client) you don't even need your own server. There's been a boom in cheap (or free!) static hosts with great developer experiences (e.g. Netlify, Now) and Gatsby is positioned to take advantage. You can even throw a Gatsby site on Github Pages if you like.
 
 ### Huge community
-The community isn't as huge as WordPress' but it's growing quickly. The Gatsby ecosystem is built on plugins, and the core Gatsby APIs make it easy to create your own if you can't find what you're looking for.
+The community isn't as big as WordPress' but it's growing quickly. The Gatsby ecosystem is built on plugins, and the core Gatsby APIs make it easy to create your own if you can't find what you're looking for.
 
 ### Great content experience
-This is where Gatsby is still lacking. A static site is great for many reasons, but it does make content editing more complicated. You've got to store the assets somewhere, and without a server and database that means you're reliant on 3rd party services like [Contentful](https://www.contentful.com/) and [Netlify CMS](https://www.netlifycms.org/). Lots of Gatsby sites are developer-focused and store content in Github, but this isn't feasible for non-technical editors.
+This is where Gatsby is still lacking. A static site is great for many reasons, but it does make content editing more complicated. You've got to store the assets somewhere, and without a server and database that means you're reliant on 3rd party services like [Contentful](https://www.contentful.com/) and [Netlify CMS](https://www.netlifycms.org/). Lots of Gatsby sites are developer-focused and store content in Github, but this isn't as feasible for non-technical editors.
 
 ## New Gatsby features
 
 ### Themes
 
-Gatsby's new [Themes](https://www.gatsbyjs.org/blog/2018-11-11-introducing-gatsby-themes/) is a huge step in the right direction for developers building client sites. Themes allow you to hide all the complexity and setup of big sites that need lots of plugins behind a single dependency. All of the config files and base components/styling can live somewhere else, an `npm install` away.
+Gatsby's new [Themes](https://www.gatsbyjs.org/blog/2018-11-11-introducing-gatsby-themes/) are a huge step in the right direction for developers building client sites. Themes allow you to hide all the complexity and setup of big sites that need lots of plugins behind a single dependency. All of the config files and base components/styling can live somewhere else, an `npm install` away. They're also quite easy to override using [component shadowing](https://www.christopherbiscardi.com/post/component-shadowing-in-gatsby-child-themes).
 
 ### MDX
 
-[MDX](https://mdxjs.com/) is a new superset of markdown that also allows JSX (to render React components). Writing in it is a pretty amazing experience, and it will get even better with good CMS support. It's still fairly new (most Gatsby sites still use Remark Markdown rather than MDX), but it's getting more and more mature.
+[MDX](https://mdxjs.com/) is a new superset of markdown that also allows JSX (to render React components). Writing in it is a pretty amazing experience, and it will get even better with good CMS support. It's still fairly new (most Gatsby sites still use Remark Markdown rather than MDX), but it's getting more and more mature. This very blog is written in MDX if you'd like to see [an example](https://github.com/oliverjam/oliverjam.es/blob/master/content/blog/flicker-avatar-animation/index.mdx).
 
-Using JSX in MDX is way better than [shortcodes](https://www.christopherbiscardi.com/post/towards-shortcodes-for-gatsby-sites) in WordPress. You can achieve the same functionality, but the syntax for content editors is closer to HTML (a standard). Also creating React components is a nicer experience than registering custom shortcodes. You can also leverage any of the pre-existing React components on npm/Github. This makes creating custom content very accessible to non-technical users:
+I find using JSX in MDX is nicer than [shortcodes](https://www.christopherbiscardi.com/post/towards-shortcodes-for-gatsby-sites) in WordPress. You can achieve the same functionality, but the syntax for content editors is closer to HTML (a standard). Creating React components is a nicer experience than registering custom shortcodes. You can also leverage any of the pre-existing React components on npm/Github. MDX makes creating custom content very accessible to non-technical users:
 
 ```mdx
 # My blog post
@@ -75,10 +75,10 @@ WordPress has an opinionated data model. You store everything in the MySQL datab
 
 ### Developer experience
 
-React has [taken over the JavaScript world](https://wptavern.com/npms-2019-javascript-ecosystem-survey-shows-63-of-respondents-are-using-react). Developers want to use it for everything, but on its own React isn't well-suited to static sites. Gatsby enabled devs to use the powerful framework they already know to create great static sites as well as apps. The dev experience of Gatsby is pretty incredible too. It's very quick an easy to get started, especially since you don't have to worry about getting some LAMP/MAMP setup going and running your own MySQL database locally.
+React has [taken over the JavaScript world](https://wptavern.com/npms-2019-javascript-ecosystem-survey-shows-63-of-respondents-are-using-react). Developers want to use it for everything, but on its own React isn't well-suited to static sites. Gatsby enabled devs to use the powerful framework they already know to create great static sites as well as apps. The dev experience of Gatsby is pretty incredible too. It's very quick and easy to get started, especially since you don't have to worry about getting some LAMP/MAMP setup going and running your own MySQL database locally.
 
 ### JavaScript all the things
-For better or worse PHP has enormously fallen out of favour, which makes it a bit off-putting to do WordPress development nowadays. It's kind of nice to be able to use JavaScript for everything. I've built a few [Jekyll sites](https://github.com/oliverjam/workstream-jekyll) in my time, and as a primarily frontend/JS developer it was awkward having to context switch into Ruby-land to `gem install` or `bundler` something. I've also enjoyed using [Eleventy](https://www.11ty.io/) recently as that's also a fully JS/node API.
+For better or worse PHP has [fallen out of favour](https://insights.stackoverflow.com/survey/2019#technology-_-most-loved-dreaded-and-wanted-languages), which makes it a bit off-putting to do WordPress development nowadays. It's kind of nice to be able to use JavaScript for everything. I've built a few [Jekyll sites](https://github.com/oliverjam/workstream-jekyll) in my time, and as a primarily frontend/JS developer it was awkward having to context switch into Ruby-land to `gem install` or `bundler` something. A totally JavaScript API also opens up the world of compile-to-JS languages like [TypeScript](https://www.typescriptlang.org/) and [Reason])https://reasonml.github.io/).
 
 
 ### Performance
