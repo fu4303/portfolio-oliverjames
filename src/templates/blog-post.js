@@ -36,16 +36,16 @@ function BlogPostTemplate({ pageContext }) {
           {/* <Bio /> */}
         </PostContainer>
         <RelatedContainer>
-          <li>
-            {next && (
+          {next && (
+            <li>
               <RelatedLink to={next.slug} rel="next" aria-label="Next post">
                 ← {next.frontmatter.title}
               </RelatedLink>
-            )}
-          </li>
+            </li>
+          )}
 
-          <li>
-            {previous && (
+          {previous && (
+            <li>
               <RelatedLink
                 to={previous.slug}
                 rel="prev"
@@ -53,8 +53,8 @@ function BlogPostTemplate({ pageContext }) {
               >
                 {previous.frontmatter.title} →
               </RelatedLink>
-            )}
-          </li>
+            </li>
+          )}
         </RelatedContainer>
       </Center>
     </Layout>
@@ -66,25 +66,30 @@ const Layout = styled.div`
 `;
 
 const Center = styled.div`
-  max-width: 45rem;
+  max-width: 50rem;
   margin-left: auto;
   margin-right: auto;
-  @media (min-width: 45rem) {
+  @media (min-width: 50rem) {
     margin-top: 2rem;
   }
 `;
 
 const PostContainer = styled("main")`
+  box-shadow: 0.5rem 0.5rem 0 var(--shade-60);
+  border: 0.5rem solid;
   padding: 1.5rem;
   font-size: 1.125rem;
   background-color: var(--shade-98);
-  box-shadow: 0.5rem 0.5rem 0 var(--shade-60);
-  border: 0.5rem solid;
-  @media (min-width: 45rem) {
-    margin: 2.5rem auto;
-    padding: 3rem;
-    font-size: 1.25rem;
+  @media (min-width: 40rem) {
     box-shadow: 1rem 1rem 0 var(--shade-60);
+    border: 1rem solid;
+    padding: 2.5rem;
+    font-size: 1.25rem;
+  }
+  @media (min-width: 50rem) {
+    margin: 2.5rem auto;
+    padding: 4rem;
+    font-size: 1.375rem;
   }
 `;
 
@@ -101,9 +106,12 @@ const RelatedContainer = styled("ul")`
   padding: 0;
   list-style: none;
   font-size: 1.25rem;
-  @media (min-width: 45rem) {
+  @media (min-width: 50rem) {
     margin: 2rem 0;
     grid-template-columns: 1fr 1fr;
+    & > *:last-child {
+      grid-column: 2 / 3;
+    }
   }
 `;
 
@@ -117,7 +125,8 @@ const RelatedLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
-  @media (min-width: 45rem) {
+  @media (min-width: 40rem) {
+    border: 1rem solid;
     box-shadow: 1rem 1rem 0 var(--shade-60);
   }
 `;

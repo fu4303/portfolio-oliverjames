@@ -7,7 +7,7 @@ import { List } from "./List";
 
 const Post = styled("div")`
   margin-top: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.45;
   & > * + * {
     margin-top: 1rem;
   }
