@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "astroturf";
-import { StaticQuery, graphql, Link as GatsbyLink } from "gatsby";
+import { Link as GatsbyLink } from "gatsby";
 import Time from "./Time";
+import Hidden from "./Hidden";
 
 export function Post({ title, href, children, date, ...rest }) {
   return (
@@ -17,68 +18,35 @@ export function Post({ title, href, children, date, ...rest }) {
   );
 }
 
-export default function Writing() {
+export default function Writing({ posts }) {
   return (
     <>
-      <Title>Writing</Title>
-      <StaticQuery
-        query={postsQuery}
-        render={data => {
-          const posts = data.allMdx.edges;
+      <Hidden as="h2">Writing</Hidden>
+      <PostGrid>
+        {posts.map(({ node }) => {
+          const title = node.frontmatter.title || node.fields.slug;
           return (
-            <Carousel>
-              {posts.map(({ node }) => {
-                const title = node.frontmatter.title || node.fields.slug;
-                return (
-                  <Post
-                    key={node.fields.slug}
-                    title={title}
-                    date={node.frontmatter.date}
-                    href={node.fields.slug}
-                  >
-                    {node.excerpt}
-                  </Post>
-                );
-              })}
-            </Carousel>
+            <Post
+              key={node.fields.slug}
+              title={title}
+              date={node.frontmatter.date}
+              href={node.fields.slug}
+            >
+              {node.excerpt}
+            </Post>
           );
-        }}
-      />
+        })}
+      </PostGrid>
     </>
   );
 }
 
-const postsQuery = graphql`
-  query PostsQuery {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 5) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "YYYY-MM-DD")
-            title
-          }
-        }
-      }
-    }
-  }
-`;
-
-const Title = styled("h2")`
-  @media (min-width: 55rem) {
-    text-align: right;
-  }
-`;
-
-export const Carousel = styled("div")`
+export const PostGrid = styled("div")`
   display: grid;
-  grid-template-columns: repeat(5, minmax(14rem, 1fr));
   gap: 1rem;
-  overflow-x: scroll;
-  padding-bottom: 0.5rem;
+  @media (min-width: 65rem) {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
 `;
 
 const Link = styled(GatsbyLink)`
@@ -86,7 +54,7 @@ const Link = styled(GatsbyLink)`
   min-width: 12rem;
   background-color: var(--bg-light);
   border: 0.25rem solid;
-  box-shadow: 0.25rem 0.25rem 0 var(--shade-60);
+  box-shadow: 0.5rem 0.5rem 0 var(--shade-60);
   &:focus {
     background-color: var(--shade-96);
   }
@@ -96,6 +64,12 @@ const Link = styled(GatsbyLink)`
   &:hover h3,
   &:focus h3 {
     text-decoration: underline;
+  }
+  &:last-child {
+    margin-bottom: 2rem; /* Hack to pad the overflow scroll container */
+    @media (min-width: 55rem) {
+      margin-bottom: 0;
+    }
   }
 `;
 

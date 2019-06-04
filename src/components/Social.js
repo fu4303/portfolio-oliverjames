@@ -57,12 +57,12 @@ const socialQuery = graphql`
 `;
 
 const Container = styled("div")`
+  width: max-content;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   grid-template-rows: auto auto;
   column-gap: 1rem;
   row-gap: 0.5rem;
-  color: var(--text-mid);
 `;
 
 const Email = styled("a")`
@@ -72,10 +72,8 @@ const Email = styled("a")`
   gap: 0.5rem;
   align-items: center;
   font-weight: 900;
-  color: var(--text-mid);
   transition: color 0.2s;
   &:hover {
     text-decoration: underline;
-    color: var(--primary);
   }
 `;
