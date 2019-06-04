@@ -2,8 +2,8 @@
 @custom-media --large-width (width >= 55rem);
 
 :root {
-  --hue: 20;
-  --primary: hsl(var(--hue), 100%, 50%);
+  --hue: 16;
+  --primary: hsl(var(--hue), 100%, 60%);
 
   --shade-98: hsl(var(--hue), 90%, 98%);
   --shade-96: hsl(var(--hue), 90%, 96%);
