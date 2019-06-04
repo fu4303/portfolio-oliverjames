@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "astroturf";
-import { MDXProvider } from "@mdx-js/tag";
+import { MDXProvider } from "@mdx-js/react";
 import { preToCodeBlock } from "mdx-utils";
 import { Pre, Code } from "./Code";
 import { List } from "./List";
