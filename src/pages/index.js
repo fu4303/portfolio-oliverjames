@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import styled from "astroturf";
 
 import SEO from "../components/seo";
@@ -19,6 +19,9 @@ function Index({ data }) {
           <Social />
         </About>
         <Writing>
+          <h2>
+            <Link to="/blog">Blog</Link>
+          </h2>
           <Posts posts={posts} />
         </Writing>
       </Grid>
@@ -81,8 +84,6 @@ const Title = styled("h1")`
 `;
 
 const Writing = styled("section")`
-  display: grid;
-  gap: 1rem;
   border: 0.5rem solid;
   padding: 2rem;
   background-color: var(--shade-70);
@@ -91,6 +92,5 @@ const Writing = styled("section")`
   }
   @media (min-width: 65rem) {
     padding: 3rem;
-    place-content: center;
   }
 `;

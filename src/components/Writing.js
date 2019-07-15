@@ -20,24 +20,21 @@ export function Post({ title, href, children, date, ...rest }) {
 
 export default function Writing({ posts }) {
   return (
-    <>
-      <Hidden as="h2">Writing</Hidden>
-      <PostGrid>
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
-          return (
-            <Post
-              key={node.fields.slug}
-              title={title}
-              date={node.frontmatter.date}
-              href={node.fields.slug}
-            >
-              {node.excerpt}
-            </Post>
-          );
-        })}
-      </PostGrid>
-    </>
+    <PostGrid>
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.title || node.fields.slug;
+        return (
+          <Post
+            key={node.fields.slug}
+            title={title}
+            date={node.frontmatter.date}
+            href={node.fields.slug}
+          >
+            {node.excerpt}
+          </Post>
+        );
+      })}
+    </PostGrid>
   );
 }
 
