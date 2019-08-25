@@ -12,7 +12,7 @@ class NotFoundPage extends React.Component {
     return (
       <Layout>
         <SEO title="404: Not Found" />
-        <h1>Page not Found</h1>
+        <h1>Page not found</h1>
         <p>
           Probably best to{" "}
           <Link style={{ textDecoration: "underline" }} to="/">
