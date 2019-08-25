@@ -1,7 +1,7 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import styled from "astroturf";
 
-import Layout from "../components/Layout";
 import SEO from "../components/seo";
 
 class NotFoundPage extends React.Component {
@@ -10,10 +10,16 @@ class NotFoundPage extends React.Component {
     const siteTitle = data.site.siteMetadata.title;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout>
         <SEO title="404: Not Found" />
-        <h1>Not Found</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        <h1>Page not Found</h1>
+        <p>
+          Probably best to{" "}
+          <Link style={{ textDecoration: "underline" }} to="/">
+            go home
+          </Link>{" "}
+          and try again.
+        </p>
       </Layout>
     );
   }
@@ -29,4 +35,12 @@ export const pageQuery = graphql`
       }
     }
   }
+`;
+
+const Layout = styled.div`
+  min-height: 100vh;
+  display: grid;
+  grid-gap: 0.5rem;
+  place-content: center;
+  font-size: 1.25rem;
 `;
