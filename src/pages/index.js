@@ -84,6 +84,9 @@ const Title = styled("h1")`
 `;
 
 const Writing = styled("section")`
+  display: grid;
+  grid-row-gap: 1rem;
+  align-content: start;
   border: 0.5rem solid;
   padding: 2rem;
   background-color: var(--shade-70);
@@ -91,6 +94,7 @@ const Writing = styled("section")`
     overflow-y: scroll;
   }
   @media (min-width: 65rem) {
+    align-content: center;
     padding: 3rem;
   }
 `;
