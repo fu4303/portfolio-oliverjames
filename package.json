@@ -1,22 +1,19 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "oliverjam-website",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Oliver Phillips' personal site",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Oliver Phillips <hello@oliverjam.es>",
   "dependencies": {
-    "@mdx-js/mdx": "^1.0.20",
-    "@mdx-js/react": "^1.0.20",
+    "@mdx-js/mdx": "^1.3.1",
+    "@mdx-js/react": "^1.3.1",
     "@mdx-js/tag": "^0.20.3",
     "astroturf": "^0.9.6",
     "gatsby": "^2.8.2",
     "gatsby-image": "^2.1.2",
-    "gatsby-mdx": "^0.6.3",
     "gatsby-plugin-astroturf": "^0.2.1",
     "gatsby-plugin-manifest": "^2.1.1",
+    "gatsby-plugin-mdx": "^1.0.31",
     "gatsby-plugin-offline": "^2.1.1",
     "gatsby-plugin-postcss": "^2.0.7",
     "gatsby-plugin-react-helmet": "^3.0.12",
@@ -49,15 +46,12 @@
     "gatsby-plugin-netlify": "^2.0.11",
     "prettier": "^1.17.1"
   },
-  "homepage": "https://github.com/oliverjam/website",
-  "keywords": [
-    "gatsby"
-  ],
+  "homepage": "https://oliverjam.es",
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oliverjam/website.git"
+    "url": "git+https://github.com/oliverjam/oliverjam.es.git"
   },
   "scripts": {
     "dev": "gatsby develop",

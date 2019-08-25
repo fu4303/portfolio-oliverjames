@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "astroturf";
-import MDXRenderer from "gatsby-mdx/mdx-renderer";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Jamjar } from "../components/Icons";
 
 // import Bio from "../components/Bio";

@@ -11,9 +11,7 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               excerpt
-              code {
-                body
-              }
+              body
               timeToRead
               fields {
                 slug
@@ -65,7 +63,7 @@ function getPostContext(post) {
       slug: post.fields.slug,
       frontmatter: post.frontmatter,
       excerpt: post.excerpt,
-      body: post.code.body,
+      body: post.body,
       timeToRead: post.timeToRead,
     };
 }
